@@ -5,6 +5,7 @@ import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/add_post_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/search_screen.dart'; // Tambahkan import untuk SearchScreen
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
         routes: {
           '/login': (context) => LoginScreen(),
           '/home': (context) => const HomeScreen(),
-          '/add_post': (context) =>AddPostScreen(),
+          '/add_post': (context) => AddPostScreen(),
           '/profile': (context) => ProfileScreen(),
+          '/search': (context) => const SearchScreen(), // Tambahkan rute ke SearchScreen
         },
       ),
     );
