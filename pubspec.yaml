@@ -33,6 +33,7 @@ dependencies:
   flutter_bloc: ^8.1.2 # Untuk state management BLoC
   equatable: ^2.0.5 # Untuk membandingkan objek pada BLoC
   flutter_svg: ^2.0.5 # Gunakan versi terbaru
+  font_awesome_flutter: ^10.8.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

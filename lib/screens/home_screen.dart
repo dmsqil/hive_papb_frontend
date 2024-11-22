@@ -63,10 +63,10 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         elevation: 0,
         title: SvgPicture.asset(
-          'assets/logo.svg', // Path file SVG
-          width: 40, // Lebar SVG
-          height: 40, // Tinggi SVG
-          color: Colors.white, // Pewarnaan jika diperlukan
+          'assets/logo.svg',
+          width: 40,
+          height: 40,
+          color: Colors.white,
         ),
         centerTitle: true,
       ),
@@ -80,10 +80,17 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        currentIndex: 0, // Indeks halaman home
         onTap: (index) {
-          if (index == 2) {
-            // Navigasi ke halaman tambah post
+          if (index == 0) {
+            Navigator.pushReplacementNamed(context, '/home');
+          } else if (index == 2) {
             Navigator.pushNamed(context, '/add_post');
+          } else if (index == 4) {
+            Navigator.pushNamed(context, '/profile'); // Navigasi ke halaman profil
           }
         },
         items: const [
@@ -96,7 +103,7 @@ class HomeScreen extends StatelessWidget {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline), // Ikon tambah post
+            icon: Icon(Icons.add_circle_outline),
             label: '',
           ),
           BottomNavigationBarItem(
