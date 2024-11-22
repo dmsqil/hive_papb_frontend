@@ -80,6 +80,12 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          if (index == 2) {
+            // Navigasi ke halaman tambah post
+            Navigator.pushNamed(context, '/add_post');
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -90,7 +96,7 @@ class HomeScreen extends StatelessWidget {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
+            icon: Icon(Icons.add_circle_outline), // Ikon tambah post
             label: '',
           ),
           BottomNavigationBarItem(
