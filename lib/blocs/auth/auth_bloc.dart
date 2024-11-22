@@ -10,7 +10,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthLoading());
       await Future.delayed(const Duration(seconds: 2)); // Simulasi API
 
-      if (event.username == "user" && event.password == "password") {
+      if (event.username == "1" && event.password == "1") {
         emit(AuthSuccess());
         // Navigasi ke halaman beranda setelah login berhasil
         Navigator.pushReplacementNamed(event.context, '/home');

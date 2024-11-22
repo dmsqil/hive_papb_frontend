@@ -4,6 +4,7 @@ import 'blocs/auth/auth_bloc.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/add_post_screen.dart';
+import 'screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
           '/login': (context) => LoginScreen(),
           '/home': (context) => const HomeScreen(),
           '/add_post': (context) =>AddPostScreen(),
+          '/profile': (context) => ProfileScreen(),
         },
       ),
     );
