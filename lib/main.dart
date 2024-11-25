@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'services/auth_service.dart'; // Service untuk koneksi ke API
 import 'blocs/auth/auth_bloc.dart';
 import 'screens/login_screen.dart';
+
+import 'blocs/register/register_bloc.dart';
+import 'screens/register_screen.dart';
+
 import 'screens/home_screen.dart';
 import 'screens/add_post_screen.dart';
 import 'screens/profile_screen.dart';
@@ -15,17 +20,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(),
+    // Inisialisasi AuthService
+    final authService = AuthService();
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(authService: authService),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/login', // Route awal
         routes: {
-          '/login': (context) => LoginScreen(),
-          '/home': (context) => const HomeScreen(),
-          '/add_post': (context) =>AddPostScreen(),
-          '/profile': (context) => ProfileScreen(),
+          '/login': (context) => LoginScreen(), // Halaman login
+          '/register': (context) => RegisterScreen(),
+          '/home': (context) => const HomeScreen(), // Halaman home
+          '/add_post': (context) => AddPostScreen(), // Halaman tambah post
+          '/profile': (context) => ProfileScreen(), // Halaman profil
         },
+        theme: ThemeData.dark(), // Contoh tema gelap, bisa disesuaikan
       ),
     );
   }

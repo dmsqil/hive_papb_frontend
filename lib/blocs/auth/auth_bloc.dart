@@ -1,21 +1,26 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../screens/home_screen.dart';
+import '../../services/auth_service.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthInitial()) {
+  final AuthService authService;
+
+  AuthBloc({required this.authService}) : super(AuthInitial()) {
     on<LoginSubmitted>((event, emit) async {
       emit(AuthLoading());
-      await Future.delayed(const Duration(seconds: 2)); // Simulasi API
 
-      if (event.username == "1" && event.password == "1") {
-        emit(AuthSuccess());
-        // Navigasi ke halaman beranda setelah login berhasil
-        Navigator.pushReplacementNamed(event.context, '/home');
-      } else {
-        emit(AuthFailure("Nama pengguna atau kata sandi salah."));
+      try {
+        final result = await authService.login(event.username, event.password);
+
+        if (result['success'] == true) {
+          emit(AuthSuccess());
+        } else {
+          emit(AuthFailure(error: result['message'] ?? "Login gagal, coba lagi."));
+        }
+      } catch (e) {
+        emit(AuthFailure(error: "Tidak dapat terhubung ke server, periksa koneksi Anda."));
       }
     });
   }
