@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../blocs/widgets/post_item.dart';
 import '../models/post.dart';
+import 'search_screen.dart'; // Import halaman pencarian
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -87,6 +88,11 @@ class HomeScreen extends StatelessWidget {
         onTap: (index) {
           if (index == 0) {
             Navigator.pushReplacementNamed(context, '/home');
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SearchScreen()),
+            ); // Navigasi ke SearchScreen
           } else if (index == 2) {
             Navigator.pushNamed(context, '/add_post');
           } else if (index == 4) {

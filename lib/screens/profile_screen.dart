@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'settings_screen.dart'; // Pastikan file settings_screen.dart sudah diimpor
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -19,7 +20,13 @@ class ProfileScreen extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.menu, color: Colors.white),
-            onPressed: () {},
+            onPressed: () {
+              // Navigasi ke halaman Setting
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -203,7 +210,8 @@ class ProfileScreen extends StatelessWidget {
                         color: Colors.grey,
                         fontSize: 16,
                       ),
-                      textAlign: TextAlign.center, // Pastikan teks sejajar di tengah
+                      textAlign:
+                          TextAlign.center, // Pastikan teks sejajar di tengah
                     ),
                   ),
                 ),
@@ -243,7 +251,8 @@ class ProfileScreen extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add_circle_outline), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
         ],
@@ -295,7 +304,43 @@ class ProfileScreen extends StatelessWidget {
                   content,
                   style: const TextStyle(
                     color: Colors.white,
+                    fontSize: 14,
                   ),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.favorite_border,
+                        color: Colors.grey,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        // Logika untuk menyukai postingan
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.chat_bubble_outline,
+                        color: Colors.grey,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        // Logika untuk membalas komentar
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.share,
+                        color: Colors.grey,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        // Logika untuk membagikan postingan
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
