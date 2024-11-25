@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
           '/search': (context) => const SearchScreen(),
           '/settings': (context) =>
               const SettingsScreen(), // Tambahkan rute ke SearchScreen
+          '/settings': (context) => SettingsScreen(), // Tambahkan rute ke SettingsScreen
         },
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../blocs/widgets/post_item.dart';
 import '../models/post.dart';
 import 'search_screen.dart'; // Import halaman pencarian
+import 'comment_screen.dart'; // Import halaman komentar
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,35 +15,35 @@ class HomeScreen extends StatelessWidget {
         username: "Ruchi_hotah",
         content:
             "Kegagalan adalah batu lompatan menuju keberhasilan. Belajarlah dari masa lalu dan mencoba untuk melangkah ke depan.",
-        likes: 4,
-        comments: 1,
-        share: 1,
+        likes: 84,
+        comments: 12,
+        share: 16,
         timeAgo: "49m",
         profileImage: "assets/profile/ruchi.png",
       ),
       Post(
         username: "Payal_shah",
         content: "Anda benar sekali!",
-        likes: 4,
-        comments: 1,
-        share: 1,
+        likes: 12,
+        comments: 8,
+        share: 8,
         timeAgo: "44m",
         profileImage: "assets/profile/payal.png",
       ),
       Post(
         username: "Christopher Lee",
         content: "Hey @zuck dimana centang biru saya?",
-        likes: 4,
-        comments: 1,
-        share: 1,
+        likes: 30,
+        comments: 10,
+        share: 3,
         timeAgo: "50m",
         profileImage: "assets/profile/chris.png",
       ),
       Post(
         username: "zuck",
         content: "Tunggu sebentar 😂",
-        likes: 8,
-        comments: 1,
+        likes: 24,
+        comments: 6,
         share: 1,
         timeAgo: "50m",
         profileImage: "assets/profile/zuck.png",
@@ -50,9 +51,9 @@ class HomeScreen extends StatelessWidget {
       Post(
         username: "figma",
         content: "Halo teman (lama) baru ✌",
-        likes: 4,
-        comments: 1,
-        share: 1,
+        likes: 12,
+        comments: 2,
+        share: 2,
         timeAgo: "6m",
         profileImage: "assets/profile/figma.png",
       ),
@@ -74,7 +75,19 @@ class HomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, index) {
-          return PostItem(post: posts[index]);
+          return PostItem(
+            post: posts[index],
+            onCommentTap: () {
+              if (posts[index].username == "zuck") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CommentScreen(),
+                  ),
+                );
+              }
+            },
+          );
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -96,7 +109,8 @@ class HomeScreen extends StatelessWidget {
           } else if (index == 2) {
             Navigator.pushNamed(context, '/add_post');
           } else if (index == 4) {
-            Navigator.pushNamed(context, '/profile'); // Navigasi ke halaman profil
+            Navigator.pushNamed(
+                context, '/profile'); // Navigasi ke halaman profil
           }
         },
         items: const [

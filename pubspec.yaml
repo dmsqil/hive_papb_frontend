@@ -68,7 +68,13 @@ flutter:
     - assets/profile/chris.png
     - assets/profile/figma.png
     - assets/profile/zuck.png
-
+    - assets/profile/ankurwarikoo.png
+    - assets/profile/facebook.png
+    - assets/profile/nba.png
+    - assets/profile/shakira.png
+    - assets/profile/instagram.png
+    - assets/profile/fuji.png
+    - assets/profile/nero.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
