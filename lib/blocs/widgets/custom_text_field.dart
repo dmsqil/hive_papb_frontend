@@ -17,19 +17,17 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText,
-      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.grey),
         filled: true,
-        fillColor: Colors.grey[900],
+        fillColor: Colors.white10,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
         ),
       ),
+      style: const TextStyle(color: Colors.white),
     );
   }
 }
-
-
