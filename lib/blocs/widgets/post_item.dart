@@ -3,8 +3,10 @@ import '../../models/post.dart';
 
 class PostItem extends StatelessWidget {
   final Post post;
+  final VoidCallback? onCommentTap; // Tambahkan callback untuk tombol komentar
 
-  const PostItem({Key? key, required this.post}) : super(key: key);
+  const PostItem({Key? key, required this.post, this.onCommentTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +15,7 @@ class PostItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Header Post
           Row(
             children: [
               CircleAvatar(
@@ -32,13 +35,16 @@ class PostItem extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
+          // Konten Post
           Text(
             post.content,
             style: const TextStyle(color: Colors.white),
           ),
           const SizedBox(height: 10),
+          // Footer Post (ikon interaksi)
           Row(
             children: [
+              // Tombol Suka
               Row(
                 children: [
                   const Icon(Icons.favorite, color: Colors.red),
@@ -50,17 +56,22 @@ class PostItem extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 20),
-              Row(
-                children: [
-                  const Icon(Icons.comment_outlined, color: Colors.white),
-                  const SizedBox(width: 5),
-                  Text(
-                    post.comments.toString(),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ],
+              // Tombol Komentar
+              GestureDetector(
+                onTap: onCommentTap, // Navigasi ke comment_screen
+                child: Row(
+                  children: [
+                    const Icon(Icons.comment_outlined, color: Colors.white),
+                    const SizedBox(width: 5),
+                    Text(
+                      post.comments.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(width: 20),
+              // Tombol Bagikan
               Row(
                 children: [
                   const Icon(Icons.share, color: Colors.white),
@@ -72,6 +83,7 @@ class PostItem extends StatelessWidget {
                 ],
               ),
               const Spacer(),
+              // Waktu Postingan
               Text(
                 post.timeAgo,
                 style: const TextStyle(color: Colors.grey, fontSize: 12),

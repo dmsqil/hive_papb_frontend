@@ -10,6 +10,8 @@ import 'screens/register_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/add_post_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/search_screen.dart';
+import 'screens/settings_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,16 +30,22 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc(authService: authService),
         ),
+        // Tambahkan provider lainnya jika diperlukan
+        BlocProvider<RegisterBloc>(
+          create: (context) => RegisterBloc(authService: authService),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/login', // Route awal
         routes: {
-          '/login': (context) => LoginScreen(), // Halaman login
+          '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
-          '/home': (context) => const HomeScreen(), // Halaman home
-          '/add_post': (context) => AddPostScreen(), // Halaman tambah post
-          '/profile': (context) => const ProfileScreen(), // Halaman profil
+          '/home': (context) => const HomeScreen(),
+          '/add_post': (context) => AddPostScreen(),
+          '/profile': (context) => ProfileScreen(),
+          '/search': (context) => const SearchScreen(),
+          '/settings': (context) => const SettingsScreen(),
         },
         theme: ThemeData.dark(), // Contoh tema gelap, bisa disesuaikan
       ),

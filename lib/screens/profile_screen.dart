@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'settings_screen.dart'; // Make sure this file exists
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // Jumlah tab: Utas, Balasan, Postingan Ulang
+      length: 3, // Number of tabs: Utas, Balasan, Postingan Ulang
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -16,8 +17,18 @@ class ProfileScreen extends StatelessWidget {
           leading: const Icon(Icons.public, color: Colors.white),
           actions: [
             IconButton(
-              icon: const Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(FontAwesomeIcons.instagram, color: Colors.white),
               onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.menu, color: Colors.white),
+              onPressed: () {
+                // Navigate to Settings Screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                );
+              },
             ),
           ],
         ),
@@ -190,9 +201,9 @@ class ProfileScreen extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    _buildPostList(4), // Utas dengan 4 post
-                    _buildPostList(4), // Balasan dengan 4 post
-                    _buildEmptyMessage(), // Postingan ulang kosong
+                    _buildPostList(4), // Threads with 4 posts
+                    _buildPostList(4), // Replies with 4 posts
+                    _buildEmptyMessage(), // Empty reposts
                   ],
                 ),
               ),
@@ -204,7 +215,7 @@ class ProfileScreen extends StatelessWidget {
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
           type: BottomNavigationBarType.fixed,
-          currentIndex: 4,
+          currentIndex: 4, // Set active tab
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
@@ -288,8 +299,13 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   content,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
                 ),
+                const SizedBox(height: 8),
+                const Divider(color: Colors.grey),
               ],
             ),
           ),
@@ -300,25 +316,24 @@ class ProfileScreen extends StatelessWidget {
 
   static Widget _buildInteractionBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildIconWithLabel(Icons.favorite_border, '4'),
-          const SizedBox(width: 16),
-          _buildIconWithLabel(Icons.comment_outlined, '4'),
-          const SizedBox(width: 16),
-          _buildIconWithLabel(Icons.share, '4'),
+          _buildIconWithText(Icons.favorite_border, '100'),
+          _buildIconWithText(Icons.comment, '50'),
+          _buildIconWithText(Icons.share, ''),
         ],
       ),
     );
   }
 
-  static Widget _buildIconWithLabel(IconData icon, String label) {
+  static Widget _buildIconWithText(IconData icon, String text) {
     return Row(
       children: [
-        Icon(icon, color: Colors.white, size: 20),
+        Icon(icon, color: Colors.grey, size: 20),
         const SizedBox(width: 4),
-        Text(label, style: const TextStyle(color: Colors.white)),
+        Text(text, style: const TextStyle(color: Colors.grey, fontSize: 12)),
       ],
     );
   }
