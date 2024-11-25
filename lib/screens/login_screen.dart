@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({super.key});
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           '/register': (context) => RegisterScreen(),
           '/home': (context) => const HomeScreen(), // Halaman home
           '/add_post': (context) => AddPostScreen(), // Halaman tambah post
-          '/profile': (context) => ProfileScreen(), // Halaman profil
+          '/profile': (context) => const ProfileScreen(), // Halaman profil
         },
         theme: ThemeData.dark(), // Contoh tema gelap, bisa disesuaikan
       ),

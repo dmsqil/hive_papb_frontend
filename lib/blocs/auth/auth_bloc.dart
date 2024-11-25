@@ -17,10 +17,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         if (result['success'] == true) {
           emit(AuthSuccess());
         } else {
-          emit(AuthFailure(error: result['message'] ?? "Login gagal, coba lagi."));
+          emit(AuthFailure(
+              error: result['message'] ?? "Login gagal, coba lagi."));
         }
       } catch (e) {
-        emit(AuthFailure(error: "Tidak dapat terhubung ke server, periksa koneksi Anda."));
+        emit(AuthFailure(
+            error: "Tidak dapat terhubung ke server, periksa koneksi Anda."));
       }
     });
   }
