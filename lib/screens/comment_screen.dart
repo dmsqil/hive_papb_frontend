@@ -22,7 +22,7 @@ class CommentScreen extends StatelessWidget {
               children: [
                 // Comment Item Christopher Lee
                 CommentItem(
-                  username: 'Christopher Lee',
+                  name: 'Christopher Lee',
                   message: 'Hei @zuck dimana centang biru saya?',
                   timeAgo: '50m',
                   likes: 30,
@@ -42,7 +42,7 @@ class CommentScreen extends StatelessWidget {
                 ),
                 // Komentar lainnya
                 CommentItem(
-                  username: 'zuck',
+                  name: 'zuck',
                   message: 'Tunggu sebentar..😂',
                   likes: 4,
                   timeAgo: '49m',
@@ -53,7 +53,7 @@ class CommentScreen extends StatelessWidget {
                   ),
                 ),
                 CommentItem(
-                  username: 'nero',
+                  name: 'nero',
                   message: 'Halooo😂',
                   likes: 3,
                   timeAgo: '48m',
@@ -64,7 +64,7 @@ class CommentScreen extends StatelessWidget {
                   ),
                 ),
                 CommentItem(
-                  username: 'fujii_an',
+                  name: 'fujii_an',
                   message: 'Selamat datang Chris :)',
                   likes: 2,
                   timeAgo: '40m',
@@ -75,7 +75,7 @@ class CommentScreen extends StatelessWidget {
                   ),
                 ),
                 CommentItem(
-                  username: 'Figma',
+                  name: 'Figma',
                   message: 'Selamat datang temanku😂',
                   likes: 2,
                   timeAgo: '30m',
@@ -131,7 +131,7 @@ class CommentScreen extends StatelessWidget {
 }
 
 class CommentItem extends StatelessWidget {
-  final String username;
+  final String name;
   final String message;
   final String timeAgo;
   final int? likes;
@@ -140,7 +140,7 @@ class CommentItem extends StatelessWidget {
   final Widget? profileImage;
 
   CommentItem({
-    required this.username,
+    required this.name,
     required this.message,
     required this.timeAgo,
     this.likes,
@@ -171,7 +171,7 @@ class CommentItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      username,
+                      name,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

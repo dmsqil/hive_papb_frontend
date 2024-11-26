@@ -1,5 +1,5 @@
 class Post {
-  final String username;
+  final String name;
   final String content;
   final int likes;
   final int comments;
@@ -8,7 +8,7 @@ class Post {
   final String profileImage; // Tambahkan properti untuk gambar profil
 
   Post({
-    required this.username,
+    required this.name,
     required this.content,
     required this.likes,
     required this.comments,

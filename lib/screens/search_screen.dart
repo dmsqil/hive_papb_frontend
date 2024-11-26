@@ -7,31 +7,31 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> searchResults = [
       {
-        "username": "ankurwarikoo",
+        "name": "ankurwarikoo",
         "name": "Ankur Warikoo",
         "followers": "916rb pengikut",
         "image": "assets/profile/ankurwarikoo.png",
       },
       {
-        "username": "facebook",
+        "name": "facebook",
         "name": "Facebook",
         "followers": "242rb pengikut",
         "image": "assets/profile/facebook.png",
       },
       {
-        "username": "nba",
+        "name": "nba",
         "name": "nbaclub",
         "followers": "3.2JT pengikut",
         "image": "assets/profile/nba.png",
       },
       {
-        "username": "shakira",
+        "name": "shakira",
         "name": "shakira",
         "followers": "3.2JT pengikut",
         "image": "assets/profile/shakira.png",
       },
       {
-        "username": "instagram",
+        "name": "instagram",
         "name": "instagram",
         "followers": "3.2M pengikut",
         "image": "assets/profile/instagram.png",
@@ -86,7 +86,7 @@ class SearchScreen extends StatelessWidget {
                   title: Row(
                     children: [
                       Text(
-                        result["username"]!,
+                        result["name"]!,
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

@@ -24,7 +24,7 @@ class PostItem extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                post.username,
+                post.name,
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

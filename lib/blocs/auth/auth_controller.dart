@@ -14,7 +14,7 @@ class AuthController extends Bloc<AuthEvent, AuthState> {
       yield AuthLoading();
 
       try {
-        final result = await authService.login(event.username, event.password);
+        final result = await authService.login(event.email, event.password);
         
         // Menangani response sukses
         if (result['success'] == true) {

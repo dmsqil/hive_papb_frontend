@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Post> posts = [
       Post(
-        username: "Ruchi_hotah",
+        name: "Ruchi_hotah",
         content:
             "Kegagalan adalah batu lompatan menuju keberhasilan. Belajarlah dari masa lalu dan mencoba untuk melangkah ke depan.",
         likes: 84,
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         profileImage: "assets/profile/ruchi.png",
       ),
       Post(
-        username: "Payal_shah",
+        name: "Payal_shah",
         content: "Anda benar sekali!",
         likes: 12,
         comments: 8,
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         profileImage: "assets/profile/payal.png",
       ),
       Post(
-        username: "Christopher Lee",
+        name: "Christopher Lee",
         content: "Hey @zuck dimana centang biru saya?",
         likes: 30,
         comments: 10,
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
         profileImage: "assets/profile/chris.png",
       ),
       Post(
-        username: "zuck",
+        name: "zuck",
         content: "Tunggu sebentar 😂",
         likes: 24,
         comments: 6,
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
         profileImage: "assets/profile/zuck.png",
       ),
       Post(
-        username: "figma",
+        name: "figma",
         content: "Halo teman (lama) baru ✌",
         likes: 12,
         comments: 2,
@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
           return PostItem(
             post: posts[index],
             onCommentTap: () {
-              if (posts[index].username == "zuck") {
+              if (posts[index].name == "zuck") {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
