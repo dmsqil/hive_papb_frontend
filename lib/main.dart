@@ -12,6 +12,7 @@ import 'screens/add_post_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/activity_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,8 +47,9 @@ class MyApp extends StatelessWidget {
           '/profile': (context) => ProfileScreen(),
           '/search': (context) => const SearchScreen(),
           '/settings': (context) => const SettingsScreen(),
+          '/activity': (context) => ActivityScreen(),
         },
-        theme: ThemeData.dark(), // Contoh tema gelap, bisa disesuaikan
+        theme: ThemeData.dark(), 
       ),
     );
   }
