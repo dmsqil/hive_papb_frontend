@@ -1,6 +1,7 @@
 # hive_papb
 
-A new Flutter project.
+Fitur aktivitas 
+dibuat oleh Celtha Missella - H1101221015
 
 ## Getting Started
 
