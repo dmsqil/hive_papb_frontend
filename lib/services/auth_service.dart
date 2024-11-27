@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:hive_papb/utils/global_singleton.dart';
 
 class AuthService {
-  final String baseUrl = 'http://172.16.1.95:8000/api'; // ip4 hanif
+  final String apiUrl = "http://172.16.1.95:8000/api";
 
   Future<Map<String, dynamic>> login(String email, String password) async {
-    final url = Uri.parse('$baseUrl/login');
+    // final prefs = await SharedPreferences.getInstance();
+    final url = Uri.parse('$apiUrl/login');
 
     final response = await http.post(
       url,
@@ -19,6 +21,8 @@ class AuthService {
       if (data['token'] != null) {
         await saveToken(data['token']); // Save token after login
       }
+      print(data['user']);
+      await saveUser(data['user']);
       return data;
     } else if (response.statusCode == 403) {
       // Handle 403 Forbidden
@@ -33,7 +37,7 @@ class AuthService {
   }
 
   Future<Map<String, dynamic>> register(String name, String email, String password, String confirmPassword) async {
-    final url = Uri.parse('$baseUrl/register');
+    final url = Uri.parse('$apiUrl/register');
 
     try {
       final response = await http.post(
@@ -85,6 +89,17 @@ class AuthService {
       throw Exception("Failed to save token: $e");
     }
   }
+
+  // Example function to save the user after login 
+  Future<void> saveUser(String user) async { 
+    final prefs = await SharedPreferences.getInstance(); 
+    await prefs.setString('authUser', user); } 
+    // Example function to retrieve the user ID 
+  
+  // Future<String?> getUserId() async { 
+  //   final prefs = await SharedPreferences.getInstance(); 
+  //   return prefs.getString('authUserId'); 
+  // }
 
   Future<void> logout() async {
     try {
