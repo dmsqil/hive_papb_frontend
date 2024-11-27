@@ -26,7 +26,8 @@ class ProfileScreen extends StatelessWidget {
                 // Navigate to Settings Screen
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()),
                 );
               },
             ),
@@ -222,15 +223,21 @@ class ProfileScreen extends StatelessWidget {
             } else if (index == 1) {
               Navigator.pushNamed(context, '/search');
             } else if (index == 2) {
-              Navigator.pushNamed(context, '/add_post'); // Navigasi ke halaman profil
+              Navigator.pushNamed(
+                  context, '/add_post'); // Navigasi ke halaman profil
+            } else if (index == 3) {
+              Navigator.pushNamed(context, '/activity');
             }
           },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.add_circle_outline), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_circle_outline), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_border), label: ''),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline), label: ''),
           ],
         ),
       ),

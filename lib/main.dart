@@ -13,6 +13,7 @@ import 'screens/add_post_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/activity_screen.dart';
 
 void main() {
   final authService = AuthService(); // Initialize authService globally
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
           // favourite
           '/profile': (context) => ProfileScreen(),
           '/settings': (context) => const SettingsScreen(),
+          '/activity': (context) => ActivityScreen(),
         },
       ),
     );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../blocs/auth/auth_state.dart';
 import '../blocs/auth/auth_event.dart';
-// import '../blocs/auth/auth_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../blocs/auth/auth_bloc.dart'; // Replace with your actual AuthBloc import.
+import '../blocs/auth/auth_bloc.dart';
+import '../services/auth_service.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -48,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                     // Username/Email Field
                     _buildTextField(
                       controller: emailController,
-                      hintText: "email",
+                      hintText: "Email",
                     ),
                     const SizedBox(height: 20),
                     // Password Field
@@ -62,7 +62,6 @@ class LoginScreen extends StatelessWidget {
                     BlocConsumer<AuthBloc, AuthState>(
                       listener: (context, state) {
                         if (state is AuthSuccess) {
-                          // print("AuthSuccess state triggered.");
                           // Success Snackbar and Navigation
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -88,12 +87,14 @@ class LoginScreen extends StatelessWidget {
 
                         return ElevatedButton(
                           onPressed: () {
-                            context.read<AuthBloc>().add(
-                                  LoginSubmitted(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  ),
-                                );
+                            if (_validateInputs(context)) {
+                              context.read<AuthBloc>().add(
+                                    LoginSubmitted(
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                    ),
+                                  );
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue,
@@ -169,5 +170,32 @@ class LoginScreen extends StatelessWidget {
       ),
       style: const TextStyle(color: Colors.white),
     );
+  }
+
+  // Validate input fields
+  bool _validateInputs(BuildContext context) {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Email dan kata sandi harus diisi!"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return false;
+    }
+
+    // Simple email format validation
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    if (!emailRegex.hasMatch(emailController.text)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Format email tidak valid!"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return false;
+    }
+
+    return true;
   }
 }
