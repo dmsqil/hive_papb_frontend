@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 String baseUrl = 'https://example.com/'; // Ganti dengan domain API Anda
 
 class Post {
@@ -48,11 +49,18 @@ class Post {
       image: resolveImage(json['image']),
       likeCount: json['like_count'],
       commentCount: json['comment_count'],
+      // createdAt: DateTime.parse(json['created_at'] as String),
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
       userName: json['user']['name'],
       userProfileImage: json['user']['image'],
       isLiked: (json['user']['id'] == authUserId),
     );
+  }
+
+  // Method to get formatted date
+   String get formattedDate {
+    DateTime parseDate = DateTime.parse(createdAt);
+    return DateFormat('MMM dd, yyyy').format(parseDate); // Formats DateTime to "Nov 21, 2023"
   }
 }

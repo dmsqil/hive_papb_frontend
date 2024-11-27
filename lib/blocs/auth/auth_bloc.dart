@@ -28,6 +28,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final result = await authService.login(event.email, event.password);
       
         if (result['success'] == true) {
+          print("succes dijalankan");
           emit(AuthSuccess()); // ii
         } else {
           emit(AuthFailure(

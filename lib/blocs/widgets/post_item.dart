@@ -150,8 +150,8 @@ class PostItem extends StatelessWidget {
               const Spacer(),
               // Waktu Postingan
               Text(
-                post.createdAt,
-                style: const TextStyle(color: Colors.grey, fontSize: 12),
+                post.formattedDate, // Output: Nov 21, 2023
+                style: const TextStyle(color: Colors.white),
               ),
             ],
           ),
