@@ -36,7 +36,8 @@ class AuthService {
     }
   }
 
-  Future<Map<String, dynamic>> register(String name, String email, String password, String confirmPassword) async {
+  Future<Map<String, dynamic>> register(String name, String email,
+      String password, String confirmPassword) async {
     final url = Uri.parse('$apiUrl/register');
 
     try {
@@ -58,11 +59,15 @@ class AuthService {
           throw Exception("Gagal memproses respons JSON: ${response.body}");
         }
       } else if (response.statusCode >= 400 && response.statusCode < 500) {
-        throw Exception("Permintaan salah (${response.statusCode}): ${response.body}");
+        throw Exception(
+            "Permintaan salah (${response.statusCode}): ${response.body}");
       } else if (response.statusCode >= 500) {
-        throw Exception("Kesalahan server (${response.statusCode}): ${response.body}");
-      } else if (response.headers['content-type']?.contains('text/html') ?? false) {
-        throw Exception("Terjadi kesalahan: Server mengembalikan halaman HTML, bukan JSON.");
+        throw Exception(
+            "Kesalahan server (${response.statusCode}): ${response.body}");
+      } else if (response.headers['content-type']?.contains('text/html') ??
+          false) {
+        throw Exception(
+            "Terjadi kesalahan: Server mengembalikan halaman HTML, bukan JSON.");
       } else {
         throw Exception("Respons tidak terduga (${response.statusCode}).");
       }
@@ -80,7 +85,7 @@ class AuthService {
       throw Exception("Failed to check authentication status: $e");
     }
   }
-  
+
   Future<void> saveToken(String token) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -90,15 +95,16 @@ class AuthService {
     }
   }
 
-  // Example function to save the user after login 
-  Future<void> saveUser(String user) async { 
-    final prefs = await SharedPreferences.getInstance(); 
-    await prefs.setString('authUser', user); } 
-    // Example function to retrieve the user ID 
-  
-  // Future<String?> getUserId() async { 
-  //   final prefs = await SharedPreferences.getInstance(); 
-  //   return prefs.getString('authUserId'); 
+  // Example function to save the user after login
+  Future<void> saveUser(String user) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('authUser', user);
+  }
+  // Example function to retrieve the user ID
+
+  // Future<String?> getUserId() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   return prefs.getString('authUserId');
   // }
 
   Future<void> logout() async {

@@ -156,7 +156,7 @@ class CommentItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          profileImage ?? 
+          profileImage ??
               CircleAvatar(
                 backgroundColor: Colors.grey,
                 radius: 25,
@@ -235,9 +235,9 @@ class CommentItem extends StatelessWidget {
                     SizedBox(width: 16),
                     Row(
                       children: [
-                        Icon(Icons.share, color: Colors.white, size: 16),
+                        Icon(Icons.autorenew, color: Colors.white, size: 16),
                         SizedBox(width: 4),
-                        Text('Bagikan',
+                        Text('',
                             style: TextStyle(color: Colors.grey, fontSize: 12)),
                       ],
                     ),
