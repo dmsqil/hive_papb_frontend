@@ -5,7 +5,7 @@ import '../models/post.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PostService {
-  final String apiUrl = "http://172.16.1.95:8000/api";
+  final String apiUrl = "http://172.16.1.3:8000/api";
 
   // ambil semua data post, tampilkan di home
   Future<List<Post>> fetchPosts() async {
@@ -62,7 +62,7 @@ class PostService {
       final token = prefs.getString('authToken');
       
       final response = await http.get(
-        Uri.parse('http://172.16.1.95:8000/api/posts/$postId/like'),
+        Uri.parse('http://172.16.1.3:8000/api/posts/$postId/like'),
         headers: {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json', // Optional, specify if needed

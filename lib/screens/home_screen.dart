@@ -87,6 +87,8 @@ class HomeScreen extends StatelessWidget {
             );
           } else if (index == 2) {
             Navigator.pushNamed(context, '/add_post');
+          } else if (index == 3) {
+            Navigator.pushNamed(context, '/activity');
           } else if (index == 4) {
             Navigator.pushNamed(context, '/profile');
           }

@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:hive_papb/utils/global_singleton.dart';
 
 class AuthService {
-  final String apiUrl = "http://172.16.1.95:8000/api";
+  final String apiUrl = "http://172.16.1.3:8000/api";
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     // final prefs = await SharedPreferences.getInstance();

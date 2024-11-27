@@ -108,7 +108,8 @@ class SearchScreen extends StatelessWidget {
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(0, 185, 185, 185),
-                      side: const BorderSide(color: Color.fromARGB(255, 177, 177, 177)),
+                      side: const BorderSide(
+                          color: Color.fromARGB(255, 177, 177, 177)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -138,8 +139,12 @@ class SearchScreen extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/home');
           } else if (index == 2) {
             Navigator.pushNamed(context, '/add_post');
+          } else if (index == 3) {
+            Navigator.pushNamed(
+                context, '/activity'); // Navigasi ke halaman profil
           } else if (index == 4) {
-            Navigator.pushNamed(context, '/profile'); // Navigasi ke halaman profil
+            Navigator.pushNamed(
+                context, '/profile'); // Navigasi ke halaman profil
           }
         },
         items: const [

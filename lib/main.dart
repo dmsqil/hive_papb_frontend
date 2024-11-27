@@ -70,7 +70,6 @@ class MyApp extends StatelessWidget {
           '/settings': (context) => const SettingsScreen(),
           '/activity': (context) => ActivityScreen(),
         },
-        theme: ThemeData.dark(), 
       ),
     );
   }

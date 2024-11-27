@@ -9,5 +9,5 @@ class GlobalSingleton {
   factory GlobalSingleton() => _instance;
 
   // Example global variables
-  String apiKey = "http://172.16.1.95:8000/api";
+  String apiKey = "http://172.16.1.3:8000/api";
 }
