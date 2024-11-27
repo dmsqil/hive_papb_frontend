@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'services/auth_service.dart'; // Service untuk koneksi ke API
+import 'services/auth_service.dart';
 import 'blocs/auth/auth_bloc.dart';
-import 'screens/login_screen.dart';
-
+import 'blocs/auth/auth_event.dart';
+import 'blocs/auth/auth_state.dart';
 import 'blocs/register/register_bloc.dart';
+import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
-
 import 'screens/home_screen.dart';
 import 'screens/add_post_screen.dart';
 import 'screens/profile_screen.dart';
@@ -15,37 +16,57 @@ import 'screens/settings_screen.dart';
 import 'screens/activity_screen.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  final authService = AuthService(); // Initialize authService globally
 
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(authService: authService)..add(AppStarted()),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
+}
+// LoginSubmitted LoginSubmitted
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Inisialisasi AuthService
-    final authService = AuthService();
+    final authService = AuthService(); // Shared AuthService instance
 
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(authService: authService),
+          create: (context) => AuthBloc(authService: authService)..add(AppStarted()),
         ),
-        // Tambahkan provider lainnya jika diperlukan
         BlocProvider<RegisterBloc>(
           create: (context) => RegisterBloc(authService: authService),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login', // Route awal
+        theme: ThemeData.dark(),
+        home: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            if (state is AuthSuccess) {
+              return const HomeScreen();
+            } else if (state is AuthFailure) {
+              return LoginScreen(); // Or display an error page
+            } else {
+              return LoginScreen();
+            }
+          },
+        ),
         routes: {
-          '/login': (context) => LoginScreen(),
           '/register': (context) => RegisterScreen(),
           '/home': (context) => const HomeScreen(),
-          '/add_post': (context) => AddPostScreen(),
-          '/profile': (context) => ProfileScreen(),
           '/search': (context) => const SearchScreen(),
+          '/add_post': (context) => AddPostScreen(),
+          // favourite
+          '/profile': (context) => ProfileScreen(),
           '/settings': (context) => const SettingsScreen(),
           '/activity': (context) => ActivityScreen(),
         },

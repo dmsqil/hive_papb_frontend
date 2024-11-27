@@ -216,6 +216,15 @@ class ProfileScreen extends StatelessWidget {
           unselectedItemColor: Colors.grey,
           type: BottomNavigationBarType.fixed,
           currentIndex: 4, // Set active tab
+          onTap: (index) {
+            if (index == 0) {
+              Navigator.pushReplacementNamed(context, '/home');
+            } else if (index == 1) {
+              Navigator.pushNamed(context, '/search');
+            } else if (index == 2) {
+              Navigator.pushNamed(context, '/add_post'); // Navigasi ke halaman profil
+            }
+          },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
@@ -235,7 +244,7 @@ class ProfileScreen extends StatelessWidget {
         return Column(
           children: [
             _buildPostCard(
-              username: 'User $index',
+              name: 'User $index',
               timeAgo: '${index + 1}h',
               content: 'Contoh konten untuk utas atau balasan $index',
               profileImage:
@@ -258,7 +267,7 @@ class ProfileScreen extends StatelessWidget {
   }
 
   static Widget _buildPostCard({
-    required String username,
+    required String name,
     required String timeAgo,
     required String content,
     required String profileImage,
@@ -281,7 +290,7 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      username,
+                      name,
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
