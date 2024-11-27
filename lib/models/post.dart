@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-String baseUrl = 'https://example.com/'; // Ganti dengan domain API Anda
 
 class Post {
   final int id;
@@ -37,9 +36,9 @@ class Post {
         return image;
       }
 
-      // Jika relatif, tambahkan base URL
-      const String baseUrl = 'https://example.com/';
-      return '$baseUrl$image';
+      // Jika relatif, Hilangkan gambar 
+      // const String baseUrl = 'https://example.com/';
+      return null;
     }
 
     return Post(
