@@ -16,7 +16,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           event.password,
           event.confirmPassword,
         );
-
+        
         if (result['success'] == true) {
           emit(RegisterSuccess());
         } else {

@@ -3,6 +3,15 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:hive_papb/utils/global_singleton.dart';
 
+Future<void> logout() async {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('authToken'); // Remove token
+  } catch (e) {
+    throw Exception("Failed to log out: $e");
+  }
+}
+
 class AuthService {
   final String apiUrl = "http://172.16.2.12:8000/api";
 
@@ -56,6 +65,10 @@ class AuthService {
 
       if (response.statusCode == 201) {
         try {
+          final data = json.decode(response.body);
+          if (data['token'] != null) {
+            await saveToken(data['token']); // Save token after login
+          }
           return json.decode(response.body);
         } catch (e) {
           throw Exception("Gagal memproses respons JSON: ${response.body}");
@@ -111,12 +124,5 @@ class AuthService {
   //   return prefs.getString('authUserId'); 
 
 
-  Future<void> logout() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.remove('authToken'); // Remove token
-    } catch (e) {
-      throw Exception("Failed to log out: $e");
-    }
-  }
+
 }
