@@ -46,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text("Registrasi berhasil!"),
                   ));
-                  Navigator.pushReplacementNamed(context, '/login');
+                  Navigator.pushReplacementNamed(context, '/home');
                 } else if (state is RegisterFailure) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(state.error),

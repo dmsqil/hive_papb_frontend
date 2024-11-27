@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/settings/settings_bloc.dart';
 import '../blocs/settings/settings_event.dart';
 import '../blocs/settings/settings_state.dart';
+import '../services/auth_service.dart';
 import 'login_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -56,6 +57,7 @@ class SettingsScreen extends StatelessWidget {
 
   void _handleLogout(BuildContext context) {
     // Navigasi ke halaman login
+    logout();
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginScreen()), // Hapus 'const'
