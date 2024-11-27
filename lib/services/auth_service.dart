@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:hive_papb/utils/global_singleton.dart';
 
 class AuthService {
-  final String apiUrl = "http://172.16.1.95:8000/api";
+  final String apiUrl = "http://172.16.2.12:8000/api";
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     // final prefs = await SharedPreferences.getInstance();
@@ -21,6 +21,7 @@ class AuthService {
       if (data['token'] != null) {
         await saveToken(data['token']); // Save token after login
       }
+      
       print(data['user']);
       await saveUser(data['user']);
       return data;
@@ -91,9 +92,12 @@ class AuthService {
   }
 
   // Example function to save the user after login 
-  Future<void> saveUser(String user) async { 
-    final prefs = await SharedPreferences.getInstance(); 
-    await prefs.setString('authUser', user); } 
+    Future<void> saveUser(Map<String, dynamic> user) async { 
+      final prefs = await SharedPreferences.getInstance(); 
+      final String userString = json.encode(user); // Konversi Map ke String
+      await prefs.setString('authUser', userString); // Simpan String ke SharedPreferences
+      print("User saved: $userString"); // Debug
+    }
     // Example function to retrieve the user ID 
   
   // Future<String?> getUserId() async { 
