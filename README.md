@@ -1,17 +1,14 @@
 # hive_papb
 
-Fitur aktivitas 
-dibuat oleh Celtha Missella - H1101221015
+Pengembangan Aplikasi Perangkat Bergerak
 
-## Getting Started
+Kelas: B
+Kelompok : 2
 
-This project is a starting point for a Flutter application.
+Nama Anggota Kelompok :
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Hanif Al Aslam | H1101221001
+Nazarudin | H1101221005
+Erin Prastiwi | H110122109
+Celtha Missella | H1101221015
+Dimas Aqil Salsabil | H1101221057
